@@ -1,6 +1,7 @@
 module Main exposing (..)
 
 import Html exposing (..)
+import Html.Attributes exposing (..)
 
 -- Model
 
@@ -28,7 +29,20 @@ view : Model -> Html Msg
 view model =
   div
     []
-    [ header [] []
-    , main' [] []
+    [ header [] [ h1 [] [ text "PRIORITIES" ] ]
+    , main'
+        []
+        [ div
+            [ id "add" ]
+            [ p [class "description"] [text "+ Add Priority"] ]
+        , div
+            [ id "todos" ]
+            []
+        , div
+            [ class "instructions" ]
+            [ p [] [ text "Tap to prioritize." ]
+            , p [] [ text "Tap-hold to remove priority." ]
+            ]
+        ]
     , footer [] []
     ]
