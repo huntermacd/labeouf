@@ -29,6 +29,7 @@ type alias Model =
 type alias Entry =
   { description : String
   , id : Int
+  , taps : Int
   }
 
 emptyModel : Model
@@ -70,6 +71,7 @@ newEntry : String -> Int -> Entry
 newEntry desc id' =
   { description = desc
   , id = id'
+  , taps = 0
   }
 
 onEnter : Msg -> Attribute Msg
@@ -122,5 +124,5 @@ viewEntry entry =
         [ text entry.description ]
     , span
         [ class "taps" ]
-        []
+        [ text <| toString entry.taps ]
     ]
