@@ -119,7 +119,6 @@ view model =
             , p [] [ text "Tap-hold to remove priority." ]
             ]
         ]
-    , footer [] []
     ]
 
 viewEntry : Entry -> Html Msg
