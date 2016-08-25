@@ -1,7 +1,19 @@
 module Main exposing (..)
 
 import Html exposing (..)
+import Html.App as App
 import Html.Attributes exposing (..)
+
+
+-- main
+
+main : Program Never
+main =
+  App.beginnerProgram
+    { model = emptyModel
+    , view = view
+    , update = \msg model -> model
+    }
 
 -- Model
 
