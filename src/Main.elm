@@ -46,6 +46,7 @@ type Msg
   = NoOp
   | UpdateInput String
   | Add
+  | Tap Int
 
 
 update : Msg -> Model -> Model
@@ -65,6 +66,12 @@ update msg model =
               model.entries
             else
               model.entries ++ [newEntry model.input model.uid]}
+
+    Tap id' ->
+      let updateEntry e =
+        if e.id == id' then { e | taps = e.taps + 1 } else e
+      in
+        { model | entries = List.map updateEntry model.entries }
 
 
 newEntry : String -> Int -> Entry
@@ -120,7 +127,9 @@ viewEntry entry =
   div
     [ class "todo" ]
     [ p
-        [ class "description" ]
+        [ class "description"
+        , onClick <| Tap entry.id
+          ]
         [ text entry.description ]
     , span
         [ class "taps" ]
