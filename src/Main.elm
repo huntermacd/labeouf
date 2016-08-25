@@ -99,14 +99,17 @@ view model =
     [ header
         []
         [ h1 [] [ text "PRIORITIES" ]
-        , input
-            [ placeholder "What's your idea?"
-            , autofocus True
-            , value model.input
-            , onInput UpdateInput
-            , onEnter Add
-            ]
-            []
+        , div
+          [ class "input-container" ]
+          [ input
+              [ placeholder "What's your idea?"
+              , autofocus True
+              , value model.input
+              , onInput UpdateInput
+              , onEnter Add
+              ]
+              []
+          ]
         ]
     , main'
         []
@@ -116,7 +119,7 @@ view model =
         , div
             [ class "instructions" ]
             [ p [] [ text "Tap to prioritize." ]
-            , p [] [ text "Tap-hold to remove priority." ]
+            -- , p [] [ text "Tap-hold to remove priority." ]
             ]
         ]
     ]
@@ -124,11 +127,11 @@ view model =
 viewEntry : Entry -> Html Msg
 viewEntry entry =
   div
-    [ class "todo" ]
+    [ class "todo"
+    , onClick <| Tap entry.id
+    ]
     [ p
-        [ class "description"
-        , onClick <| Tap entry.id
-          ]
+        [ class "description" ]
         [ text entry.description ]
     , span
         [ class "taps" ]
