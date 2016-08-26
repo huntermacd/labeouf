@@ -67,9 +67,9 @@ update msg model =
             else
               model.entries ++ [newEntry model.input model.uid]}
 
-    Tap id' ->
+    Tap id ->
       let updateEntry e =
-        if e.id == id' then { e | taps = e.taps + 1 } else e
+        if e.id == id then { e | taps = e.taps + 1 } else e
       in
         { model | entries = List.map updateEntry model.entries }
 
