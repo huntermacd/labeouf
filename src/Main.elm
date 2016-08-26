@@ -146,10 +146,10 @@ viewEntry entry =
         [ class "description" ]
         [ text entry.description ]
     , span
-        [ class "taps" ]
-        [ text <| toString entry.taps ]
-    , span
         [ class "remove"
         , onClick <| Remove entry.id ]
         [ text "X" ]
+    , span
+        [ class "taps" ]
+        [ text <| toString entry.taps ]
     ]
