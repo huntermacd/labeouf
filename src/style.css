@@ -60,7 +60,6 @@ h1,
 }
 
 h1,
-#add,
 .taps,
 .instructions,
 .remove {
@@ -72,13 +71,8 @@ h1 {
   margin: 10px;
 }
 
-#add,
 .todo {
   height: 40px;
-}
-
-#add {
-  background-color: lightgreen;
 }
 
 .input-container {
@@ -102,7 +96,6 @@ h1 {
   cursor: default;
 }
 
-#add,
 .todo,
 .description,
 .taps,
