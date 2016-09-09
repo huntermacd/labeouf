@@ -18,35 +18,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-    display: block;
+  display: block;
 }
 body {
-    line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-    list-style: none;
+  list-style: none;
 }
 blockquote, q {
-    quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-    content: '';
-    content: none;
+  content: '';
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Page Styles */
@@ -54,81 +54,85 @@ table {
 h1,
 .description,
 .taps,
+.remove,
 .instructions {
-    font-family: 'Averia Sans Libre', cursive;
+  font-family: 'Arial', sans-serif;
 }
 
 h1,
-#add,
 .taps,
-.instructions {
-    text-align: center;
+.instructions,
+.remove {
+  text-align: center;
 }
 
 h1 {
-    font-size: 2em;
-    margin: 10px;
+  font-size: 2em;
+  margin: 10px;
 }
 
-#add,
 .todo {
-    height: 40px;
-}
-
-#add {
-    background-color: lightgreen;
+  height: 40px;
 }
 
 .input-container {
-   height: 50px;
-   padding: 5px;
-   box-sizing: border-box;
+  height: 50px;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
 .input-container > input {
-   border: 1px dashed grey;
-   line-height: 40px;
-   height: 40px;
-   width: 100%;
-   padding: 0 5px;
-   box-sizing: border-box;
+  border: 1px solid grey;
+  line-height: 40px;
+  height: 40px;
+  width: 100%;
+  padding: 0 5px;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
 .todo {
-    background-color: lightsteelblue;
+  background-color: lightsteelblue;
+  cursor: default;
 }
 
-#add,
 .todo,
 .description,
-.taps {
-    margin: 5px;
+.taps,
+.remove {
+  margin: 5px;
 }
 
 h1,
 .description,
 .taps,
-.instructions {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.instructions,
+.todo {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .description,
-.taps {
-    display: inline-block;
-    line-height: 28px;
+.taps,
+.remove {
+  display: inline-block;
+  line-height: 30px;
+}
+
+.taps,
+.remove {
+  float: right;
+  height: 30px;
+  width: 30px;
 }
 
 .taps {
-    background-color: white;
-    float: right;
-    height: 30px;
-    width: 30px;
+  background-color: white;
 }
 
 .instructions {
-   height: 40px;
-   line-height: 40px;
+  height: 40px;
+  line-height: 40px;
 }

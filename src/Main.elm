@@ -6,9 +6,10 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Json.Decode as Json
 import String
+import List
 
 
--- main
+-- Main
 
 main : Program Never
 main =
@@ -18,6 +19,7 @@ main =
     , update = update
     }
 
+
 -- Model
 
 type alias Model =
@@ -26,11 +28,13 @@ type alias Model =
   , uid : Int
   }
 
+
 type alias Entry =
   { description : String
   , id : Int
   , taps : Int
   }
+
 
 emptyModel : Model
 emptyModel =
@@ -46,6 +50,7 @@ type Msg
   = NoOp
   | UpdateInput String
   | Add
+  | Remove Int
   | Tap Int
 
 
@@ -67,6 +72,12 @@ update msg model =
             else
               model.entries ++ [newEntry model.input model.uid]}
 
+    Remove id ->
+      let
+        isNotThis e = e.id /= id
+      in
+        { model | entries = List.filter isNotThis model.entries }
+
     Tap id ->
       let updateEntry e =
         if e.id == id then { e | taps = e.taps + 1 } else e
@@ -80,6 +91,7 @@ newEntry desc id' =
   , id = id'
   , taps = 0
   }
+
 
 onEnter : Msg -> Attribute Msg
 onEnter msg =
@@ -119,10 +131,10 @@ view model =
         , div
             [ class "instructions" ]
             [ p [] [ text "Tap to prioritize." ]
-            -- , p [] [ text "Tap-hold to remove priority." ]
             ]
         ]
     ]
+
 
 viewEntry : Entry -> Html Msg
 viewEntry entry =
@@ -133,6 +145,10 @@ viewEntry entry =
     [ p
         [ class "description" ]
         [ text entry.description ]
+    , span
+        [ class "remove"
+        , onClick <| Remove entry.id ]
+        [ text "X" ]
     , span
         [ class "taps" ]
         [ text <| toString entry.taps ]
