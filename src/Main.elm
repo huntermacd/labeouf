@@ -145,7 +145,9 @@ view model =
             [ div
                 [ id "todos" ]
               <|
-                List.map viewEntry (List.reverse (List.sortBy .taps model.entries))
+                List.map viewEntry <|
+                    List.reverse <|
+                        List.sortBy .taps model.entries
             , div
                 [ class "instructions" ]
                 [ p [] [ text "Tap to prioritize." ]
