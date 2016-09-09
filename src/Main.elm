@@ -11,40 +11,48 @@ import List
 
 -- Main
 
+
 main : Program Never
 main =
-  App.beginnerProgram
-    { model = emptyModel
-    , view = view
-    , update = update
-    }
+    App.beginnerProgram
+        { model = emptyModel
+        , view = view
+        , update = update
+        }
+
+
 
 
 -- Model
 
+
 type alias Model =
-  { entries : List Entry
-  , input : String
-  , uid : Int
-  }
+    { entries : List Entry
+    , input : String
+    , uid : Int
+    }
+
 
 
 type alias Entry =
-  { description : String
-  , id : Int
-  , taps : Int
-  }
+    { description : String
+    , id : Int
+    , taps : Int
+    }
+
 
 
 emptyModel : Model
 emptyModel =
-  { entries = []
-  , input = ""
-  , uid = 0
-  }
+    { entries = []
+    , input = ""
+    , uid = 0
+    }
+
 
 
 -- Update
+
 
 type Msg
   = NoOp
@@ -87,28 +95,32 @@ update msg model =
 
 newEntry : String -> Int -> Entry
 newEntry desc id' =
-  { description = desc
-  , id = id'
-  , taps = 0
-  }
+    { description = desc
+    , id = id'
+    , taps = 0
+    }
+
 
 
 onEnter : Msg -> Attribute Msg
 onEnter msg =
-  let
-    tagger code =
-      if code == 13 then msg else NoOp
-  in
-    on "keydown" (Json.map tagger keyCode)
+    let
+        tagger code =
+            if code == 13 then
+                msg
+            else
+                NoOp
+    in
+        on "keydown" (Json.map tagger keyCode)
+
 
 
 -- View
 
+
 view : Model -> Html Msg
 view model =
-  div
-    []
-    [ header
+    div
         []
         [ h1 [] [ text "PRIORITIES" ]
         , div
@@ -133,7 +145,7 @@ view model =
             [ p [] [ text "Tap to prioritize." ]
             ]
         ]
-    ]
+
 
 
 viewEntry : Entry -> Html Msg
